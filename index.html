@@ -2,368 +2,167 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>AI &amp; Robotics Lab</title>
+  <title>091825</title>
   <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PSU California — AI & Robotics Excellence Research Lab</title>
-  <meta name="description" content="PSU California AI & Robotics Excellence Research Lab — research in autonomy, robot perception, human-robot interaction, and AI for health." />
-  <style>
-    /* ---------- Base / Reset ---------- */
-    :root{
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#94a3b8;
-      --accent:#1fb6ff;
-      --accent-2:#7c3aed;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --card-radius:12px;
-      --max-width:1100px;
-      --shadow: 0 8px 30px rgba(2,6,23,0.6);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: linear-gradient(180deg, #071023 0%, #081225 40%, #071428 100%);
-      color:#e6eef8;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-    a{color:var(--accent); text-decoration:none;}
-    img{max-width:100%; display:block;}
-    .container{max-width:var(--max-width); margin:0 auto; padding:28px;}
-    header{backdrop-filter: blur(6px); background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-radius:12px; padding:12px; margin-bottom:18px; display:flex; align-items:center; gap:14px; box-shadow:var(--shadow)}
-    .logo{
-      width:56px; height:56px; border-radius:10px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:#031028; font-size:18px;
-      box-shadow: 0 6px 18px rgba(31,182,255,0.08), inset 0 -4px 8px rgba(255,255,255,0.06);
-    }
-    header h1{font-size:18px; margin:0}
-    header p{margin:0; color:var(--muted); font-size:13px}
-    nav{margin-left:auto; display:flex; gap:12px; align-items:center}
-    nav a{font-size:14px; color: #cfe9ff; padding:8px 12px; border-radius:10px}
-    nav a.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021125; font-weight:600}
-
-    /* ---------- Hero ---------- */
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap:28px;
-      align-items:center;
-      margin-bottom:28px;
-    }
-    .hero-card{
-      background:var(--card); padding:28px; border-radius:var(--radius); box-shadow:var(--shadow);
-    }
-    .eyebrow{display:inline-block; background:var(--glass); color:var(--muted); padding:6px 10px; border-radius:999px; font-weight:600; font-size:12px}
-    .headline{font-size:28px; margin:12px 0 8px}
-    .lead{color:var(--muted); margin-bottom:18px}
-    .cta-row{display:flex; gap:12px; align-items:center}
-    .btn{padding:10px 14px; border-radius:10px; cursor:pointer; border:0; font-weight:600}
-    .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#021125}
-    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.06); color:#cfe9ff}
-
-    /* image / stats card */
-    .lab-visual{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:12px; padding:18px; display:flex; flex-direction:column; gap:12px; align-items:center;}
-    .lab-visual .mock{width:100%; height:240px; border-radius:10px; background:
-      radial-gradient(circle at 20% 20%, rgba(127,58,237,0.16), transparent 8%),
-      linear-gradient(180deg, rgba(31,182,255,0.06), rgba(124,58,237,0.06));
-      display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:14px;}
-    .stats{display:flex; gap:12px; width:100%; justify-content:space-between}
-    .stat{flex:1; text-align:center; padding:8px; background:rgba(255,255,255,0.02); border-radius:10px}
-    .stat .num{font-weight:700; font-size:18px}
-    .stat .label{color:var(--muted); font-size:12px}
-
-    /* ---------- Sections ---------- */
-    section{margin-bottom:20px}
-    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
-    .card{background:var(--card); padding:18px; border-radius:12px; box-shadow: 0 6px 18px rgba(2,6,23,0.5)}
-    .card h3{margin-top:0}
-    .pill{display:inline-block; padding:6px 10px; background:rgba(255,255,255,0.03); color:var(--muted); border-radius:999px; font-size:12px; margin-right:8px}
-
-    /* people */
-    .people{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
-    .person{display:flex; gap:12px; align-items:center; padding:12px; border-radius:12px; background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
-    .avatar{width:64px; height:64px; border-radius:10px; background:linear-gradient(135deg,#173b4d,#0b2440); display:flex; align-items:center; justify-content:center; font-weight:700; color:#bfeaff}
-    .person h4{margin:0}
-    .person p{margin:0; color:var(--muted); font-size:13px}
-
-    /* publications / projects */
-    .list{display:flex; flex-direction:column; gap:10px}
-    .item{padding:12px; background:rgba(255,255,255,0.02); border-radius:10px; display:flex; justify-content:space-between; gap:12px}
-    .item .meta{color:var(--muted); font-size:13px}
-    .filters{display:flex; gap:8px; margin-bottom:10px}
-
-    /* footer */
-    footer{padding:18px; color:var(--muted); text-align:center; font-size:13px;}
-    /* responsive */
-    @media (max-width:980px){
-      .hero{grid-template-columns:1fr; }
-      .people{grid-template-columns:repeat(2,1fr)}
-      .grid-3{grid-template-columns:repeat(2,1fr)}
-    }
-    @media (max-width:600px){
-      .people{grid-template-columns:1fr}
-      nav{display:none}
-      header{padding:10px}
-    }
-
-    /* small animations */
-    .fade-in{animation:fadeIn .9s ease both}
-    @keyframes fadeIn{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PSU — AI & Robotics Excellence Lab</title>
+  <meta name="description" content="PSU AI & Robotics Excellence Lab — autonomy, perception, HRI, and AI for healthcare research." />
 </head>
 <body>
-  <div class="container">
-    <header class="fade-in" role="banner" aria-label="PSU Lab header">
-      <div class="logo">PSU</div>
-      <div>
-        <h1>PSU California — AI & Robotics Excellence Lab</h1>
-        <p>Pacific States University · Research Center of Excellence for Robotics and AI</p>
+  <!-- Header -->
+  <header class="site-header" role="banner" aria-label="PSU header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">PSU</div>
+        <div class="brand-text">
+          <h1>AI & Robotics Excellence Lab</h1>
+          <p class="sub">Pacific States University · Research Center of Excellence for AI & Robotics</p>
+        </div>
       </div>
 
-      <nav aria-label="Main navigation">
+      <nav class="main-nav" aria-label="Main navigation">
         <a href="#research">Research</a>
-        <a href="#people">People</a>
         <a href="#projects">Projects</a>
-        <a href="#contact" class="primary">Contact</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="btn-primary">Contact</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <!-- HERO -->
-    <main class="hero">
-      <div class="hero-card fade-in" role="main">
-        <span class="eyebrow">Research Lab</span>
-        <h2 class="headline">Advancing Autonomous Systems & Human-Centered AI</h2>
-        <p class="lead">The PSU California AI & Robotics Excellence Lab conducts interdisciplinary research in autonomy, perception, human-robot interaction, and AI for healthcare — combining rigorous theory with applied development and industry partnerships.</p>
-
-        <div class="cta-row">
-          <button class="btn primary" onclick="scrollToSection('research')">Explore Research</button>
-          <button class="btn ghost" onclick="scrollToSection('contact')">Contact Us</button>
-        </div>
-
-        <div style="margin-top:18px; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
-          <span class="pill">Autonomy</span>
-          <span class="pill">Perception</span>
-          <span class="pill">HRI</span>
-          <span class="pill">AI for Health</span>
-          <span class="pill">Industry Partnerships</span>
-        </div>
-      </div>
-
-      <aside class="lab-visual fade-in" aria-label="lab snapshot">
-        <div class="mock" role="img" aria-label="lab visualization placeholder">
-          Lab visualization / hero image
-        </div>
-        <div class="stats" role="list">
-          <div class="stat" role="listitem"><div class="num">12+</div><div class="label">Active Projects</div></div>
-          <div class="stat" role="listitem"><div class="num">8</div><div class="label">Faculty</div></div>
-          <div class="stat" role="listitem"><div class="num">24</div><div class="label">Researchers & Students</div></div>
-        </div>
-      </aside>
-    </main>
-
-    <!-- Research Areas -->
-    <section id="research" class="fade-in">
-      <div class="card">
-        <h3>Research Areas</h3>
-        <p class="lead" style="margin-bottom:14px; color:var(--muted)">We pursue interdisciplinary research spanning core AI, robot perception, control, and real-world deployments in healthcare, logistics, and manufacturing.</p>
-        <div class="grid-3">
-          <div class="card">
-            <h4>Autonomous Systems</h4>
-            <p class="meta">Planning, control, multi-agent coordination, and safety for mobile robots and autonomous vehicles.</p>
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-label="Lab overview">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <span class="eyebrow">Research Lab</span>
+          <h2>Advancing Autonomous Systems & Human-Centered AI</h2>
+          <p class="lead">
+            We bridge laboratory research with real-world applications in autonomy, sensor fusion, human–robot interaction, and AI for healthcare.
+          </p>
+          <div class="cta">
+            <button class="btn" onclick="scrollToSection('research')">Explore Research</button>
+            <button class="btn ghost" onclick="scrollToSection('contact')">Contact Us</button>
           </div>
-          <div class="card">
-            <h4>Perception & ML</h4>
-            <p class="meta">Sensor fusion, trajectory prediction, computer vision, and probabilistic machine learning for robust perception.</p>
-          </div>
-          <div class="card">
-            <h4>Human-Robot Interaction</h4>
-            <p class="meta">User-centered interaction, assistive robotics, intent recognition, and explainability for trust and collaboration.</p>
+          <div class="pills">
+            <span class="pill">Autonomy</span>
+            <span class="pill">Perception</span>
+            <span class="pill">HRI</span>
+            <span class="pill">AI for Health</span>
+            <span class="pill">Partnerships</span>
           </div>
         </div>
+
+        <aside class="aside-card" aria-label="Lab snapshot">
+          <div class="visual" role="img" aria-label="Lab visualization">Lab visualization</div>
+          <div class="stats" role="list">
+            <div class="stat" role="listitem"><div class="num">12+</div><div class="label">Active Projects</div></div>
+            <div class="stat" role="listitem"><div class="num">8</div><div class="label">Faculty</div></div>
+            <div class="stat" role="listitem"><div class="num">24</div><div class="label">Researchers</div></div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <!-- People -->
-    <section id="people" class="fade-in">
-      <h3 style="margin-bottom:12px">Team</h3>
-      <div class="people">
-        <div class="person card" tabindex="0" data-role="faculty" onclick="openProfile(event,'Dr. Sungho Kim','Professor & Lab Director','Pacific States University / Konkuk University','Leading research in robot perception and autonomous systems. Director of the Research Center of Excellence for Robotics and AI.');">
-          <div class="avatar">SK</div>
-          <div>
-            <h4>Dr. Sungho Kim</h4>
-            <p>Professor & Lab Director</p>
-          </div>
-        </div>
-
-        <div class="person card" tabindex="0" data-role="researcher" onclick="openProfile(event,'Seungbin Lee','Graduate Researcher','Computer Science, PSU','Works on trajectory datasets, perception pipelines, and industry collaborations.');">
-          <div class="avatar">SL</div>
-          <div>
-            <h4>Seungbin Lee</h4>
-            <p>Graduate Researcher</p>
-          </div>
-        </div>
-
-        <div class="person card" tabindex="0" data-role="postdoc" onclick="openProfile(event,'Dr. Jane Park','Postdoctoral Researcher','Robotics Lab','Focus on human-robot interaction and assistive systems.');">
-          <div class="avatar">JP</div>
-          <div>
-            <h4>Dr. Jane Park</h4>
-            <p>Postdoctoral Researcher</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects & Publications -->
-    <section id="projects" class="fade-in">
-      <div style="display:flex; gap:16px; align-items:flex-start; flex-direction:column">
+    <!-- Research -->
+    <section id="research" class="section" aria-label="Research areas">
+      <div class="container">
         <div class="card">
-          <h3>Selected Projects & Industry Work</h3>
-          <div class="list" style="margin-top:10px">
+          <h3>Research Areas</h3>
+          <p class="lead">Core AI, perception, control, and applied research in healthcare, logistics, and manufacturing.</p>
+          <div class="grid-3">
+            <div class="tile">
+              <h4>Autonomous Systems</h4>
+              <p class="meta">Planning · Control · Safety · Multi-agent collaboration</p>
+            </div>
+            <div class="tile">
+              <h4>Perception & ML</h4>
+              <p class="meta">Sensor fusion · Trajectory prediction · Probabilistic modeling</p>
+            </div>
+            <div class="tile">
+              <h4>Human-Robot Interaction</h4>
+              <p class="meta">User-centered design · Explainability · Assistive robotics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section" aria-label="Projects and publications">
+      <div class="container">
+        <div class="card">
+          <h3>Selected Projects</h3>
+          <div class="list">
             <div class="item">
               <div>
                 <strong>Amazon Product Launch Collaboration</strong>
-                <div class="meta">Led contract negotiations and launch activities to place research-backed product on Amazon US — includes market entry strategy and compliance review.</div>
+                <div class="meta">Market entry strategy, compliance — 2024</div>
               </div>
-              <div style="text-align:right">
-                <div class="meta">2024</div>
-                <div><small>Industry</small></div>
-              </div>
+              <div class="meta">Industry</div>
             </div>
-
             <div class="item">
               <div>
                 <strong>Sewon Intelligence Partnership</strong>
-                <div class="meta">Sourced collaboration opportunities, drafted NDA and MOU, coordinated promotional outreach with media partners.</div>
+                <div class="meta">NDA/MOU, outreach — 2023–2024</div>
               </div>
-              <div style="text-align:right">
-                <div class="meta">2023–2024</div>
-                <div><small>Industry</small></div>
-              </div>
-            </div>
-
-            <div class="item">
-              <div>
-                <strong>Vehicle Trajectory Dataset Analysis</strong>
-                <div class="meta">Organized and interpreted large-scale vehicle trajectory datasets for motion prediction models and safety analysis.</div>
-              </div>
-              <div style="text-align:right">
-                <div class="meta">2022</div>
-                <div><small>Research</small></div>
-              </div>
+              <div class="meta">Industry</div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
+    <!-- Education -->
+    <section id="education" class="section" aria-label="Director Education">
+      <div class="container">
         <div class="card">
-          <h3>Recent Publications</h3>
-          <div class="filters" role="toolbar" aria-label="publication filters">
-            <button class="btn ghost" onclick="filterPub('all')">All</button>
-            <button class="btn ghost" onclick="filterPub('ml')">ML</button>
-            <button class="btn ghost" onclick="filterPub('robotics')">Robotics</button>
-            <button class="btn ghost" onclick="filterPub('health')">AI for Health</button>
-          </div>
-          <div id="pubList" class="list" aria-live="polite">
-            <div class="item" data-tags="robotics">
-              <div>
-                <strong>Safe Trajectory Prediction for Urban Driving</strong>
-                <div class="meta">S. Lee, S. Kim — IEEE Robotics, 2024</div>
-              </div>
-              <div class="meta">PDF</div>
-            </div>
-            <div class="item" data-tags="ml health">
-              <div>
-                <strong>Deep Learning for Respiratory Signal Analysis</strong>
-                <div class="meta">S. Lee et al. — Journal of Medical AI, 2023</div>
-              </div>
-              <div class="meta">PDF</div>
-            </div>
-            <div class="item" data-tags="robotics">
-              <div>
-                <strong>Human-Robot Interaction in Assisted Living</strong>
-                <div class="meta">J. Park, S. Lee — HRI Conf., 2023</div>
-              </div>
-              <div class="meta">PDF</div>
-            </div>
-          </div>
+          <h3>Professor & Director: Dr. Sungho Kim</h3>
+          <ul class="list">
+            <li><strong>Ph.D.</strong> in Computer Science, Korea University</li>
+            <li><strong>M.S.</strong> in Computer Science, Korea University</li>
+            <li><strong>B.S.</strong> in Computer Engineering, Yonsei University</li>
+          </ul>
         </div>
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="fade-in">
-      <div class="card">
-        <h3>Contact & Partnership</h3>
-        <p class="meta" style="margin-bottom:12px">For collaboration, industry partnerships, or media inquiries, please contact the lab office.</p>
-        <div style="display:flex; gap:14px; flex-wrap:wrap">
-          <div class="card" style="flex:1; min-width:220px">
-            <strong>Lab Director</strong>
-            <div class="meta">Dr. Sungho Kim</div>
-            <div class="meta">Email: <a href="mailto:skim@psu.edu">skim@psu.edu</a></div>
-          </div>
-          <div class="card" style="flex:1; min-width:220px">
-            <strong>Lab Office</strong>
-            <div class="meta">PSU California — Research Center of Excellence for Robotics and AI</div>
-            <div class="meta">Address: 3424 Wilshire Blvd, 12th Floor, Los Angeles, CA 90010, USA</div>
+    <section id="contact" class="section" aria-label="Contact and partnership">
+      <div class="container">
+        <div class="card contact-card">
+          <h3>Contact & Partnership</h3>
+          <p class="meta">For collaborations and media inquiries, please reach out to the lab.</p>
+          <div class="contact-grid">
+            <div class="small-card">
+              <strong>Lab Director</strong>
+              <div class="meta">Dr. Sungho Kim</div>
+              <div class="meta">Email: <a href="mailto:skim@psu.edu">skim@psu.edu</a></div>
+            </div>
+            <div class="small-card">
+              <strong>Lab Office</strong>
+              <div class="meta">PSU — Research Center of Excellence for AI & Robotics</div>
+              <div class="meta">Address: 3530 Wilshire Blvd Floor 11, Los Angeles, CA 90010</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
+  </main>
 
-    <footer>
-      © <span id="year"></span> PSU California — AI & Robotics Excellence Research Lab · All rights reserved.
-    </footer>
-  </div>
-
-  <!-- Simple JS for interactions -->
-  <script>
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    function scrollToSection(id){
-      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
-    }
-
-    // Publication filtering
-    function filterPub(tag){
-      const items = document.querySelectorAll('#pubList .item');
-      if(tag === 'all'){ items.forEach(i=> i.style.display='flex'); return; }
-      items.forEach(i=>{
-        const tags = i.getAttribute('data-tags') || '';
-        i.style.display = tags.includes(tag) ? 'flex' : 'none';
-      });
-    }
-
-    // Simple modal/profile preview (using alert for simplicity)
-    function openProfile(e, name, title, affiliation, bio){
-      // For a production site, replace with custom modal UI.
-      const content = name + "\\n" + title + " · " + affiliation + "\\n\\n" + bio;
-      // Accessible focus hint
-      alert(content);
-    }
-
-    // keyboard accessible: open card on Enter
-    document.querySelectorAll('.person').forEach(el=>{
-      el.addEventListener('keydown', (ev)=>{
-        if(ev.key === 'Enter' || ev.key === ' '){
-          el.click();
-        }
-      });
-    });
-  </script>
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> PSU — AI & Robotics Excellence Lab · All rights reserved.</div>
+    </div>
+  </footer>
 </body>
 </html>
 <!-- partial -->
