@@ -1,37 +1,48 @@
-// Header scroll style
-window.addEventListener('scroll', () => {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  if (window.scrollY > 40) header.classList.add('scrolled');
-  else header.classList.remove('scrolled');
-});
-
-// Smooth scroll
-function scrollToSection(id){
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+// Smooth scroll to section when buttons or nav links are clicked
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
 }
-document.querySelectorAll('a[href^="#"], button[onclick^="scrollToSection"]').forEach(el => {
-  el.addEventListener('click', e => {
-    const href = el.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      scrollToSection(href.slice(1));
+
+// Animate cards when they enter the viewport
+function animateCards() {
+  const cards = document.querySelectorAll('.card');
+  const windowHeight = window.innerHeight;
+
+  cards.forEach(card => {
+    const cardTop = card.getBoundingClientRect().top;
+    if (cardTop < windowHeight - 50) {
+      card.classList.add('visible');
     }
   });
+}
+
+// Update footer year dynamically
+function updateYear() {
+  const yearSpan = document.getElementById('year');
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+}
+
+// Initialize animations and footer on load
+window.addEventListener('load', () => {
+  animateCards();
+  updateYear();
 });
 
 // Animate cards on scroll
-const cards = document.querySelectorAll('.card');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.18 });
-cards.forEach(c => observer.observe(c));
+window.addEventListener('scroll', animateCards);
 
-// Footer year
-document.addEventListener('DOMContentLoaded', () => {
-  const y = document.querySelector('#year');
-  if (y) y.textContent = new Date().getFullYear();
+// Optional: Smooth scroll for nav links
+document.querySelectorAll('.main-nav a, .btn').forEach(link => {
+  link.addEventListener('click', event => {
+    const target = link.getAttribute('href');
+    if (target && target.startsWith('#')) {
+      event.preventDefault();
+      scrollToSection(target.substring(1));
+    }
+  });
 });
