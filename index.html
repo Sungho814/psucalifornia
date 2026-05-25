@@ -1,14 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>odePen Home Research Center of Excellence for AI &amp; Robotics v6</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PSU — AI & Robotics Excellence Lab</title>
   <meta name="description" content="PSU AI & Robotics Excellence Lab — autonomy, perception, HRI, and AI for healthcare research." />
-  <link rel="stylesheet" href="./style.css">
+  <style>
+/* ── Root / Theme ── */
+:root {
+  --bg: #ffffff;
+  --green: #0b7a4a;
+  --green-600: #0a6e42;
+  --text: #0f2330;
+  --muted: #6b7c86;
+  --card: #ffffff;
+  --radius: 12px;
+  --shadow: 0 8px 22px rgba(15,34,48,0.06);
+  --max-width: 1100px;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* ── Base ── */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--bg) 0%, #f8fff7 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: var(--green-600); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { display: block; max-width: 100%; }
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ── Header ── */
+.site-header {
+  background: var(--card);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-bottom: 1px solid rgba(11,122,74,0.06);
+  box-shadow: var(--shadow);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+.brand { display: flex; gap: 1rem; align-items: center; }
+.logo {
+  width: 56px; height: 56px; border-radius: 10px;
+  background: linear-gradient(180deg, var(--green), var(--green-600));
+  color: #fff; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.05rem; flex-shrink: 0;
+}
+.brand-text h1 { font-size: 1.05rem; margin: 0; }
+.brand-text .sub { margin: 2px 0 0; font-size: 0.82rem; color: var(--muted); }
+
+/* ── Nav ── */
+.main-nav { display: flex; gap: 0.5rem; align-items: center; }
+.main-nav a {
+  padding: 0.5rem 0.9rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--green-600);
+  text-decoration: none;
+}
+.main-nav a.btn-primary {
+  background: var(--green);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(11,122,74,0.12);
+}
+.main-nav a:hover { opacity: 0.88; text-decoration: none; }
+
+/* ── Hero ── */
+.hero { padding: 2.25rem 0; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  align-items: center;
+}
+.hero-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--shadow);
+}
+.eyebrow {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 700;
+  color: var(--green-600);
+  background: rgba(11,122,74,0.06);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+}
+.hero-card h2 { margin: 0.6rem 0; font-size: 1.6rem; }
+.lead { color: var(--muted); margin-bottom: 1rem; font-size: 0.98rem; }
+.cta { display: flex; gap: 0.6rem; margin-bottom: 0.9rem; flex-wrap: wrap; }
+.btn {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+.btn:hover { opacity: 0.88; }
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(11,122,74,0.25);
+  color: var(--green-600);
+}
+.pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pill {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(11,122,74,0.06);
+  color: var(--green-600);
+}
+
+/* ── Aside card ── */
+.aside-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+}
+.visual {
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(11,122,74,0.06), rgba(11,122,74,0.02));
+}
+.stats { display: flex; gap: 0.5rem; margin-top: 0.8rem; }
+.stat {
+  flex: 1;
+  background: rgba(11,122,74,0.04);
+  padding: 0.6rem;
+  border-radius: 10px;
+  text-align: center;
+}
+.stat .num { font-weight: 800; font-size: 1.15rem; color: var(--green); }
+.stat .label { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+
+/* ── Sections & Cards ── */
+.section { padding: 2rem 0; }
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: transform .3s, opacity .5s;
+}
+.card.visible { opacity: 1; transform: none; }
+.card h3 { margin: 0 0 0.75rem; font-size: 1.15rem; }
+.card .lead { font-size: 0.92rem; margin-bottom: 0.5rem; }
+.card p { color: var(--muted); font-size: 0.9rem; margin-top: 0.8rem; }
+.card strong { color: var(--text); }
+.meta { color: var(--muted); font-size: 0.85rem; }
+
+/* ── Projects list ── */
+.list { display: flex; flex-direction: column; gap: 0.5rem; }
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(11,122,74,0.03);
+  transition: background 0.15s;
+}
+.item:hover { background: rgba(11,122,74,0.07); }
+.item strong { font-size: 0.93rem; color: var(--text); }
+
+/* ── Publications ── */
+.pub-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+  margin: 0.75rem 0 1.2rem;
+}
+#pub-search {
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  min-width: 230px;
+  outline: none;
+  transition: border-color .2s;
+  flex: 1;
+}
+#pub-search:focus { border-color: var(--green); }
+
+.pub-filter-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.pub-filter {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(11,122,74,0.2);
+  background: transparent;
+  color: var(--green-600);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.pub-filter.active,
+.pub-filter:hover {
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+.pub-list { display: flex; flex-direction: column; gap: 1rem; }
+.pub-year-group { display: flex; flex-direction: column; gap: 0.45rem; }
+.pub-year-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--green-600);
+  background: rgba(11,122,74,0.07);
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.2rem;
+  width: fit-content;
+}
+
+.pub-item {
+  padding: 0.65rem 0.9rem;
+  border-radius: 10px;
+  background: #f8fff7;
+  box-shadow: 0 2px 5px rgba(15,34,48,0.05);
+  transition: background .15s, transform .15s;
+}
+.pub-item:hover {
+  background: #e9fce8;
+  transform: translateX(3px);
+}
+.pub-item.hidden { display: none; }
+
+.pub-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 0.35rem;
+}
+.pub-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.pub-date { margin-left: auto; font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+
+.pub-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.pub-badge.ijgca     { background: rgba(11,122,74,0.12); color: #0a6e42; }
+.pub-badge.ijesa     { background: rgba(30,100,200,0.10); color: #1a5cb8; }
+.pub-badge.conference{ background: rgba(160,80,0,0.10);  color: #a05000; }
+.pub-badge.ieee      { background: rgba(100,50,180,0.10); color: #6432b4; }
+
+#pub-empty { color: var(--muted); font-size: 0.88rem; margin-top: 0.75rem; display: none; }
+
+/* ── Organization Chart ── */
+.org-controls {
+  display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 0.75rem 0 1rem;
+}
+#org-search {
+  padding: 0.45rem 0.7rem; border-radius: 10px;
+  border: 1px solid #ddd; min-width: 220px; outline: none;
+  font-size: 0.88rem; flex: 1;
+}
+#org-search:focus { border-color: var(--green); }
+#expand-all, #collapse-all {
+  padding: 0.45rem 0.8rem; border-radius: 10px; border: none;
+  background: var(--green); color: #fff; font-weight: 700;
+  cursor: pointer; font-size: 0.82rem; transition: background 0.2s;
+}
+#expand-all:hover, #collapse-all:hover { background: var(--green-600); }
+
+.org-wrap { display: flex; flex-direction: column; align-items: center; }
+.node.director {
+  display: flex; flex-direction: column; align-items: center;
+  background: linear-gradient(135deg, #0b7a4a, #118856);
+  color: #fff; padding: 0.85rem 1.2rem; border-radius: 10px;
+  width: 260px; margin: 0 auto 1.25rem;
+  box-shadow: 0 6px 18px rgba(11,122,74,0.22);
+}
+.node-title { font-size: 0.72rem; font-weight: 700; opacity: .8; text-transform: uppercase; letter-spacing: .06em; }
+.node-name  { font-weight: 700; font-size: 1rem; margin-top: 0.15rem; }
+
+.branches {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  justify-content: space-between; width: 100%;
+}
+.branch {
+  flex: 1 1 300px; background: #fff; padding: 0.9rem;
+  border-radius: 12px; box-shadow: 0 3px 8px rgba(15,34,48,0.06);
+}
+.branch-head {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.5rem;
+}
+.branch-head strong { font-size: 0.88rem; color: var(--text); }
+.toggle {
+  background: transparent; border: 1px solid rgba(11,122,74,0.3);
+  padding: 0.3rem 0.6rem; border-radius: 10px;
+  cursor: pointer; color: var(--green); font-weight: 700;
+  font-size: 0.8rem; transition: background 0.15s;
+}
+.toggle:hover { background: rgba(11,122,74,0.07); }
+
+.members-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.35rem;
+}
+.members-list li {
+  padding: 0.42rem 0.65rem; border-radius: 8px;
+  background: #f8fff7; font-size: 0.85rem; font-weight: 600;
+  box-shadow: 0 2px 4px rgba(15,34,48,0.04);
+  transition: background 0.15s;
+}
+.members-list li:hover { background: #e9fce8; }
+.members-list.collapsed { display: none; }
+
+/* ── Contact ── */
+.contact-grid { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.9rem; }
+.small-card {
+  flex: 1 1 220px;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(11,122,74,0.03);
+  border: 1px solid rgba(11,122,74,0.08);
+}
+.small-card strong { display: block; margin-bottom: 0.3rem; color: var(--text); }
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--card);
+  padding: 1.1rem 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  border-top: 1px solid rgba(11,122,74,0.07);
+  margin-top: 1.5rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .branches  { flex-direction: column; }
+  .node.director { width: 100%; }
+}
+@media (max-width: 600px) {
+  .pub-date { margin-left: 0; }
+  .header-inner { flex-wrap: wrap; }
+  .main-nav { gap: 0.3rem; }
+  .main-nav a { padding: 0.4rem 0.6rem; font-size: 0.82rem; }
+}
+  </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- ══ HEADER ══ -->
   <header class="site-header" role="banner" aria-label="PSU header">
     <div class="container header-inner">
       <div class="brand">
@@ -18,7 +411,6 @@
           <p class="sub">Pacific States University · Research Center of Excellence for AI & Robotics</p>
         </div>
       </div>
-
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
@@ -29,17 +421,20 @@
   </header>
 
   <main>
-    <!-- Hero -->
+
+    <!-- ══ HERO ══ -->
     <section class="hero" aria-label="Lab overview">
       <div class="container hero-grid">
+
         <div class="hero-card">
           <span class="eyebrow">AI & Robotics</span>
           <h2>Robotics & Human-Centered AI</h2>
           <p class="lead">
-            We design and develop intelligent robotic systems that interact with humans, assist in healthcare, and operate autonomously in real-world environments.
+            We design and develop intelligent robotic systems that interact with humans, assist in healthcare,
+            and operate autonomously in real-world environments.
           </p>
           <div class="cta">
-            <button class="btn" onclick="scrollToSection('research')">Explore Research</button>
+            <button class="btn" onclick="scrollToSection('publications')">Explore Research</button>
             <button class="btn ghost" onclick="scrollToSection('contact')">Contact Us</button>
           </div>
           <div class="pills">
@@ -52,199 +447,444 @@
         </div>
 
         <aside class="aside-card" aria-label="Lab snapshot">
-          <div class="visual" role="img" aria-label="Lab visualization">
-            <img 
-              src="https://raw.githubusercontent.com/sungho814/psucalifornia/main/ChatGP.png" 
-              alt="Lab visualization" 
-              loading="lazy"
+          <div class="visual">
+            <img
+              src="https://raw.githubusercontent.com/sungho814/psucalifornia/main/ChatGP.png"
+              alt="Lab visualization" loading="lazy"
               style="width:100%;height:auto;border-radius:8px;object-fit:cover;"
             />
           </div>
           <div class="stats" role="list">
-            <div class="stat" role="listitem">
-              <div class="num">12+</div>
-              <div class="label">Active Projects</div>
-            </div>
-            <div class="stat" role="listitem">
-              <div class="num">3</div>
-              <div class="label">Faculty</div>
-            </div>
-            <div class="stat" role="listitem">
-              <div class="num">24</div>
-              <div class="label">Researchers</div>
-            </div>
+            <div class="stat" role="listitem"><div class="num">12+</div><div class="label">Active Projects</div></div>
+            <div class="stat" role="listitem"><div class="num">3</div><div class="label">Faculty</div></div>
+            <div class="stat" role="listitem"><div class="num">24</div><div class="label">Researchers</div></div>
           </div>
         </aside>
+
       </div>
     </section>
 
-</section>
-
-<!-- About Us 섹션 시작 -->
-<section id="about" class="section" aria-label="About AI & Robotics Excellence Lab">
-  <div class="container">
-    <div class="card">
-      <h3>About Us</h3>
-      <p class="lead">
-        The <strong>AI & Robotics Excellence Lab</strong> at Pacific States University (PSU) is dedicated to advancing research in <strong>human-centered robotics and healthcare AI</strong>. 
-        Our mission is to bridge cutting-edge laboratory research with real-world applications that enhance patient care, assistive technologies, and intelligent healthcare solutions.
-      </p>
-      <p>
-        Our team conducts interdisciplinary studies integrating <strong>robotics, artificial intelligence, and human-centered design</strong> to develop systems that improve clinical outcomes, optimize workflows, and support user engagement. 
-        Currently, we are developing <strong>climbing wearable robots</strong> and <strong>autonomous golf caddies</strong>, pushing the boundaries of assistive robotics and autonomous mobility.
-      </p>
-      <p>
-        The lab actively collaborates with global scholars, industry partners, and healthcare institutions through research projects, workshops, and symposia. 
-        We currently accept <strong>undergraduate and master’s degree students</strong> who are eager to participate in research and gain hands-on experience in robotics and healthcare AI.
-      </p>
-      <p>
-        <strong>Professor Dr. Sungho Kim</strong><br>
-        Director, AI & Robotics Excellence Lab<br>
-        Email: <a href="mailto:skim@psuca.edu">skim@psuca.edu</a>
-      </p>
-    </div>
-  </div>
-</section>
-<!-- About Us 섹션 끝 -->
-<!-- Selected Publications -->
-<section id="publications" class="section" aria-label="Selected Publications & Activities">
-  <div class="container">
-    <div class="card">
-      <h3>Selected Publications & Activities</h3>
-      <p class="lead">Publications are categorized by journals and conferences with their approximate publication dates.</p>
-      
-      <div class="grid-2">
-        <!-- Journal Publications -->
-        <div class="tile">
-          <h4>Journal Publications</h4>
-          <ul class="publications">
-            <li>
-              <strong>Big Data Analytics for Supply Chain Management</strong>
-              <div class="meta">International Journal of Grid Computing & Applications (IJGCA), Sep 2025</div>
-            </li>
-            <li>
-              <strong>Benefits of Software Engineering Development with Chat‑GPT</strong>
-              <div class="meta">IJGCA, Sep 2025</div>
-            </li>
-            <li>
-              <strong>Voice Commerce (V‑commerce): Exploring the Integration of Voice Assistants in Online Shopping</strong>
-              <div class="meta">IJGCA, Jun 2025</div>
-            </li>
-            <li>
-              <strong>AI‑Driven Chatbots and Virtual Assistants</strong>
-              <div class="meta">IJGCA, Jun 2025</div>
-            </li>
-            <li>
-              <strong>Personalization and Recommendation Systems</strong>
-              <div class="meta">IJGCA, Jun 2025</div>
-            </li>
-            <li>
-              <strong>Edge Computing in Cloud Computing</strong>
-              <div class="meta">IJGCA, Jun 2025</div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Conference Publications -->
-        <div class="tile">
-          <h4>Conference Publications</h4>
-          <ul class="publications">
-            <li>
-              <strong>Issues and Challenges in Implementing Agile Scrum Methodology</strong>
-              <div class="meta">Conference Paper, May 2025</div>
-            </li>
-            <li>
-              <strong>Rethinking Requirement Analysis for AI‑Based Projects</strong>
-              <div class="meta">Conference Paper, May 2025</div>
-            </li>
-          </ul>
+    <!-- ══ ABOUT ══ -->
+    <section id="about" class="section" aria-label="About">
+      <div class="container">
+        <div class="card">
+          <h3>About Us</h3>
+          <p class="lead">
+            The <strong>AI & Robotics Excellence Lab</strong> at Pacific States University (PSU) is dedicated to advancing research in
+            <strong>human-centered robotics and healthcare AI</strong>. Our mission is to bridge cutting-edge laboratory research with
+            real-world applications that enhance patient care, assistive technologies, and intelligent healthcare solutions.
+          </p>
+          <p>
+            Our team conducts interdisciplinary studies integrating <strong>robotics, artificial intelligence, and human-centered design</strong>
+            to develop systems that improve clinical outcomes, optimize workflows, and support user engagement.
+            Currently, we are developing <strong>climbing wearable robots</strong> and <strong>autonomous golf caddies</strong>,
+            pushing the boundaries of assistive robotics and autonomous mobility.
+          </p>
+          <p>
+            The lab actively collaborates with global scholars, industry partners, and healthcare institutions through research projects,
+            workshops, and symposia. We currently accept <strong>undergraduate and master's degree students</strong> who are eager to
+            participate in research and gain hands-on experience in robotics and healthcare AI.
+          </p>
+          <p style="margin-top:1.25rem;">
+            <strong>Professor Dr. Sungho Kim</strong><br>
+            <img
+              src="https://static.wixstatic.com/media/d0e170_f6e24835bc6840d599b0eaaf99d99e82~mv2.jpeg/v1/fill/w_400,h_500,al_c,q_80,usm_0.66_1.00_0.01/ChatGP.jpeg"
+              alt="Professor Dr. Sungho Kim"
+              style="width:150px;height:auto;border-radius:10px;margin:0.6rem 0;"
+            /><br>
+            Director, AI & Robotics Excellence Lab<br>
+            Email: <a href="mailto:skim@psuca.edu">skim@psuca.edu</a>
+          </p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<style>
-  #publications .grid-2 {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  #publications .tile {
-    flex: 1 1 300px;
-    background: #fff;
-    padding: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 3px 8px rgba(15,34,48,0.06);
-  }
-  #publications .publications {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  #publications .publications li {
-    margin-bottom: 0.8rem;
-    padding: 0.5rem;
-    border-radius: 8px;
-    background: #f8fff7;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
-  #publications .publications li:hover {
-    background: #e9fce8;
-  }
-  #publications .meta {
-    font-size: 0.85rem;
-    color: #555;
-    margin-top: 0.2rem;
-  }
-</style>
+    <!-- ══ PUBLICATIONS ══ -->
+    <section id="publications" class="section" aria-label="Selected Publications & Activities">
+      <div class="container">
+        <div class="card">
+          <h3>Selected Publications & Activities</h3>
+          <p class="lead">Publications are listed in reverse chronological order. Use filters or search to browse by journal.</p>
 
-   <!-- Projects -->
-<section id="projects" class="section" aria-label="Projects and publications">
-  <div class="container">
-    <div class="card">
-      <h3>Selected Projects</h3>
-      <div class="list">
-        <div class="item">
-          <div>
-            <strong>Amazon Product Launch Collaboration</strong>
-            <div class="meta">Market entry strategy, compliance</div>
-            <div class="meta">Industry</div>
+          <div class="pub-controls">
+            <input id="pub-search" type="text" placeholder="Search publications…" aria-label="Search publications" />
+            <div class="pub-filter-btns" role="group" aria-label="Filter by journal">
+              <button class="pub-filter active" data-filter="all">All</button>
+              <button class="pub-filter" data-filter="ieee">IEEE</button>
+              <button class="pub-filter" data-filter="ijgca">IJGCA</button>
+              <button class="pub-filter" data-filter="ijesa">IJESA</button>
+              <button class="pub-filter" data-filter="conference">Conference</button>
+            </div>
           </div>
-          <div class="meta">Date: 2026-01-15</div>
-        </div>
 
-        <div class="item">
-          <div>
-            <strong>Sewon Intelligence Partnership</strong>
-            <div class="meta">NDA/MOU, outreach</div>
-            <div class="meta">Industry</div>
-          </div>
-          <div class="meta">Date: 2026-01-25</div>
-        </div>
+          <div id="pub-list" class="pub-list">
 
-        <div class="item">
-          <div>
-            <strong>Kenqing Technology Contract Signing</strong>
-            <div class="meta">Official contract agreement for collaboration</div>
-            <div class="meta">Industry</div>
-          </div>
-          <div class="meta">Date: 2026-02-07</div>
+            <!-- ── 2026 ── -->
+            <div class="pub-year-group" data-year="2026">
+              <div class="pub-year-label">2026</div>
+
+              <!-- ★ IEEE TIC 2026 × 5 -->
+              <div class="pub-item" data-journal="ieee">
+                <div class="pub-title">Bioinspired Multi-Joint Soft Robot: Kinematics, Simulation, Sensor Integration, AI Control, and Data Visualization</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ieee">IEEE</span>
+                  <span>IEEE TIC 2026 · Spectrum International University, Kuala Lumpur, Malaysia</span>
+                  <span class="pub-date">Jun 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ieee">
+                <div class="pub-title">SaaS-Driven Transformation of Agile Project Environments: An Analytical Perspective</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ieee">IEEE</span>
+                  <span>IEEE TIC 2026 · Spectrum International University, Kuala Lumpur, Malaysia</span>
+                  <span class="pub-date">Jun 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ieee">
+                <div class="pub-title">Transformer-Based Time-Series Modeling for Predicting Long-Term Attentional Patterns in Children with ADHD</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ieee">IEEE</span>
+                  <span>IEEE TIC 2026 · Spectrum International University, Kuala Lumpur, Malaysia</span>
+                  <span class="pub-date">Jun 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ieee">
+                <div class="pub-title">Closed-Loop Brain–Computer Interfaces (BCI) Enhanced with AI-Driven Neurofeedback Using Soft Bioelectronic Networks: A Comparative Study with i-BrainTech and Proposal of a New Hybrid Model</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ieee">IEEE</span>
+                  <span>IEEE TIC 2026 · Spectrum International University, Kuala Lumpur, Malaysia</span>
+                  <span class="pub-date">Jun 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ieee">
+                <div class="pub-title">Human–AI Co-Creation in Level Design: Effects on Creativity and Efficiency</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ieee">IEEE</span>
+                  <span>IEEE TIC 2026 · Spectrum International University, Kuala Lumpur, Malaysia</span>
+                  <span class="pub-date">Jun 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Data-Driven Prediction of Customer Purchase Behavior in Retail and E-Commerce Using Machine Learning Models</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Apr 27, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Predictive Analytics for ESG Risk Assessment in Textile Manufacturing: A Multimodal Machine Learning Approach</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Apr 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Human-in-the-Loop Predictive Analytics: A Comprehensive Systematic Review of Expert-in-the-Loop Feedback Mechanisms for Enhancing Model Accuracy, Ensuring Algorithmic Fairness, and Strengthening Adversarial Robustness in Modern AI Systems</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Apr 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Multimodal Predictive Analytics: A Systematic Integration of Structured Data, Natural Language, and Visual Modalities for Enhanced Decision Support</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Apr 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">The Impact of Artificial Intelligence Adoption on Fashion Companies' Competitiveness and Individual Consumer Behavior</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Apr 5, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Design and Implementation of an End-to-End Deep Learning System for Autonomous Driving: From Visual Perception to Intelligent Vehicle Control</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Mar 27, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Automated Machine Learning Versus Expert-Engineered Predictive Modeling Pipelines: A Comparative Performance and Applicability Study</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Mar 27, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Multimodal Sensor Fusion for Autonomous Driving Using Large-Scale Machine Learning Models</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Mar 27, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Balancing Accuracy and Interpretation: An Empirical Study of Explainable AI Techniques in Business-Critical Predictive Models</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Mar 27, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Advancing Data-Driven Predictive Modeling: Evaluating the Performance, Robustness, and Practical Usability of Automated Machine Learning Compared to Expert-Designed End-to-End Data Science Pipelines</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Mar 7, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Neuro Feedback Meets Deep Learning: Closed-Loop Brain-Computer Interfaces For Motor and Cognitive Rehabilitation</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Mar 3, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Bio Inspired Multi-Joint Soft Robot: Kinematics, Simulation, Sensor Integration and AI-Based Control</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Feb 7, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Closed-Loop Brain-Computer Interfaces (BCI) Enhanced with AI-Driven Neuro Feedback using Soft Bioelectronic Networks: A Comparative Study with I-Braintech and Proposal of a New Hybrid Model</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Feb 7, 2026</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Closed-Loop Brain-Computer Interfaces with AI-Driven Neurofeedback for Motor and Cognitive Rehabilitation: Comprehensive Extended Review and Mind Affect Dataset Analysis</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Jan 7, 2026</span>
+                </div>
+              </div>
+            </div><!-- /2026 -->
+
+            <!-- ── 2025 ── -->
+            <div class="pub-year-group" data-year="2025">
+              <div class="pub-year-label">2025</div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Personalization and Recommendation Systems: Leveraging Machine Learning Algorithms to Offer Personalized Product Recommendations and Content to Customers Based on Their Behavior, Preferences and Purchasing History</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Dec 20, 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Big Data Analytics for Supply Chain Management</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Dec 20, 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijesa">
+                <div class="pub-title">Voice Commerce (V-commerce): Exploring the Integration of Voice Assistants in Online Shopping</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijesa">IJESA</span>
+                  <span>International Journal of Embedded Systems and Applications</span>
+                  <span class="pub-date">Dec 20, 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Predictive Analytics and Demand Forecasting: Applying AI to Predict Future Demand, Optimize Inventory Management and Streamline Supply Chain Logistics Based on Historical Data and Consumer Behavior Patterns with Testing by ODOO ERP</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Dec 7, 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">AI in Fraud Detection and Security: Advancements, Hurdles and What's Next for AI</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Oct 7, 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Big Data Analytics for Supply Chain Management</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Sep 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Benefits of Software Engineering Development with Chat-GPT</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Sep 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Voice Commerce (V-commerce): Exploring the Integration of Voice Assistants in Online Shopping</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Jun 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">AI-Driven Chatbots and Virtual Assistants</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Jun 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Personalization and Recommendation Systems</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Jun 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="ijgca">
+                <div class="pub-title">Edge Computing in Cloud Computing</div>
+                <div class="pub-meta">
+                  <span class="pub-badge ijgca">IJGCA</span>
+                  <span>International Journal of Grid Computing &amp; Applications</span>
+                  <span class="pub-date">Jun 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="conference">
+                <div class="pub-title">Issues and Challenges in Implementing Agile Scrum Methodology</div>
+                <div class="pub-meta">
+                  <span class="pub-badge conference">Conference</span>
+                  <span>Conference Paper</span>
+                  <span class="pub-date">May 2025</span>
+                </div>
+              </div>
+
+              <div class="pub-item" data-journal="conference">
+                <div class="pub-title">Rethinking Requirement Analysis for AI-Based Projects</div>
+                <div class="pub-meta">
+                  <span class="pub-badge conference">Conference</span>
+                  <span>Conference Paper</span>
+                  <span class="pub-date">May 2025</span>
+                </div>
+              </div>
+            </div><!-- /2025 -->
+
+          </div><!-- /pub-list -->
+          <p id="pub-empty">No publications match your search.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-    <!-- Members (Organization Chart) -->
-    <section id="members" class="section" aria-label="Lab Members — Organization Chart">
+    <!-- ══ PROJECTS ══ -->
+    <section id="projects" class="section" aria-label="Projects">
+      <div class="container">
+        <div class="card">
+          <h3>Selected Projects</h3>
+          <div class="list">
+
+            <div class="item">
+              <div>
+                <strong>Amazon Product Launch Collaboration</strong>
+                <div class="meta">Market entry strategy, compliance · Industry</div>
+              </div>
+              <div class="meta" style="white-space:nowrap;">2026-01-15</div>
+            </div>
+
+            <div class="item">
+              <div>
+                <strong>Sewon Intelligence Partnership</strong>
+                <div class="meta">NDA/MOU, outreach · Industry</div>
+              </div>
+              <div class="meta" style="white-space:nowrap;">2026-01-25</div>
+            </div>
+
+            <div class="item">
+              <div>
+                <strong>Kenqing Technology Contract Signing</strong>
+                <div class="meta">Official contract agreement for collaboration · Industry</div>
+              </div>
+              <div class="meta" style="white-space:nowrap;">2026-02-07</div>
+            </div>
+
+            <div class="item">
+              <div>
+                <strong>Distributor Agreement Signed with Doog Inc.</strong>
+                <div class="meta">Strategic distribution and robotics collaboration agreement · Industry Partnership</div>
+              </div>
+              <div class="meta" style="white-space:nowrap;">2026-03-27</div>
+            </div>
+
+            <div class="item">
+              <div>
+                <strong>Faststreams Partnership Completion</strong>
+                <div class="meta">AI mobility and intelligent systems partnership finalized · Industry Partnership</div>
+              </div>
+              <div class="meta" style="white-space:nowrap;">2026-04-17</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ MEMBERS ══ -->
+    <section id="members" class="section" aria-label="Lab Members">
       <div class="container">
         <div class="card">
           <h3>Organization Chart</h3>
-          <p class="lead">Director supervises three research groups: Autonomous Systems, Perception & ML, and HRI.</p>
+          <p class="lead">Director supervises three research groups: Autonomous Systems, Perception &amp; ML, and HRI.</p>
 
           <div class="org-controls">
-            <input id="org-search" placeholder="Search member name..." aria-label="Search members" />
+            <input id="org-search" placeholder="Search member name…" aria-label="Search members" />
             <button id="expand-all">Expand all</button>
             <button id="collapse-all">Collapse all</button>
           </div>
@@ -256,9 +896,11 @@
             </div>
 
             <div class="branches">
+
               <div class="branch">
                 <div class="branch-head">
-                  <button class="toggle" aria-controls="auto">Autonomous Systems ▾</button>
+                  <strong>Autonomous Systems</strong>
+                  <button class="toggle" aria-controls="auto" aria-expanded="true">▾</button>
                 </div>
                 <ul id="auto" class="members-list">
                   <li>Ibtisum Ahmed Nihal</li>
@@ -272,7 +914,8 @@
 
               <div class="branch">
                 <div class="branch-head">
-                  <button class="toggle" aria-controls="perc">Perception & ML ▾</button>
+                  <strong>Perception &amp; ML</strong>
+                  <button class="toggle" aria-controls="perc" aria-expanded="true">▾</button>
                 </div>
                 <ul id="perc" class="members-list">
                   <li>Hemayet Hemel</li>
@@ -286,7 +929,8 @@
 
               <div class="branch">
                 <div class="branch-head">
-                  <button class="toggle" aria-controls="hri">Human–Robot Interaction ▾</button>
+                  <strong>Human–Robot Interaction</strong>
+                  <button class="toggle" aria-controls="hri" aria-expanded="true">▾</button>
                 </div>
                 <ul id="hri" class="members-list">
                   <li>Yearanoor Khan</li>
@@ -297,86 +941,18 @@
                   <li>Mainuddin Adel Raf</li>
                 </ul>
               </div>
+
             </div>
           </div>
         </div>
       </div>
-
-      <style>
-        /* Organization Chart Styles */
-        #members .org-controls {
-          display:flex; gap:0.5rem; flex-wrap:wrap; margin:1rem 0;
-        }
-        #members .org-controls input {
-          padding:0.45rem 0.6rem; border-radius:10px; border:1px solid #ddd; min-width:220px;
-        }
-        #members .org-controls button {
-          padding:0.45rem 0.7rem; border-radius:10px; border:none;
-          background:#0b7a4a; color:#fff; font-weight:700; cursor:pointer;
-        }
-        .node.director {
-          display:flex; flex-direction:column; align-items:center;
-          background:linear-gradient(135deg,#0b7a4a,#118856);
-          color:#fff; padding:0.8rem 1rem; border-radius:10px;
-          width:250px; margin:0 auto 1.2rem;
-        }
-        .branches {
-          display:flex; gap:1rem; flex-wrap:wrap; justify-content:space-between;
-        }
-        .branch {
-          flex:1 1 300px; background:#fff; padding:0.9rem;
-          border-radius:12px; box-shadow:0 3px 8px rgba(15,34,48,0.06);
-        }
-        .branch-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem; }
-        .toggle {
-          background:transparent; border:1px solid #0b7a4a50; padding:0.35rem 0.6rem;
-          border-radius:10px; cursor:pointer; color:#0b7a4a; font-weight:700;
-        }
-        .members-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.4rem; }
-        .members-list li {
-          padding:0.45rem 0.6rem; border-radius:8px; background:#f8fff7;
-          font-weight:600; box-shadow:0 3px 8px rgba(15,34,48,0.04); cursor:default;
-        }
-        .members-list li:hover { background:#e9fce8; }
-        .collapsed { display:none; }
-        @media (max-width:900px) {
-          .branches { flex-direction:column; }
-          .node.director { width:100%; }
-        }
-      </style>
-
-      <script>
-        (function(){
-          // Toggle branches
-          document.querySelectorAll('#members .toggle').forEach(btn=>{
-            btn.addEventListener('click',()=>{
-              const list=document.getElementById(btn.getAttribute('aria-controls'));
-              const collapsed=list.classList.toggle('collapsed');
-              btn.textContent=btn.textContent.replace(/▾|▸/,'')+(collapsed?' ▸':' ▾');
-            });
-          });
-
-          // Expand/collapse all
-          document.getElementById('expand-all').onclick=()=>document.querySelectorAll('#members .members-list').forEach(l=>l.classList.remove('collapsed'));
-          document.getElementById('collapse-all').onclick=()=>document.querySelectorAll('#members .members-list').forEach(l=>l.classList.add('collapsed'));
-
-          // Search
-          document.getElementById('org-search').addEventListener('input',e=>{
-            const q=e.target.value.toLowerCase();
-            document.querySelectorAll('#members .members-list li').forEach(m=>{
-              m.style.display=m.textContent.toLowerCase().includes(q)?'':'none';
-              if(q)m.closest('.members-list').classList.remove('collapsed');
-            });
-          });
-        })();
-      </script>
     </section>
 
-    <!-- Contact -->
+    <!-- ══ CONTACT ══ -->
     <section id="contact" class="section" aria-label="Contact and partnership">
       <div class="container">
-        <div class="card contact-card">
-          <h3>Contact & Partnership</h3>
+        <div class="card">
+          <h3>Contact &amp; Partnership</h3>
           <p class="meta">For collaborations and media inquiries, please reach out to the lab.</p>
           <div class="contact-grid">
             <div class="small-card">
@@ -386,21 +962,145 @@
             </div>
             <div class="small-card">
               <strong>Lab Office</strong>
-              <div class="meta">PSU — Research Center of Excellence for AI & Robotics</div>
+              <div class="meta">PSU — Research Center of Excellence for AI &amp; Robotics</div>
               <div class="meta">3530 Wilshire Blvd Floor 11, Los Angeles, CA 90010</div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-      <div>© <span id="year"></span> PSU — AI & Robotics Excellence Lab · All rights reserved.</div>
+    <div class="container">
+      © <span id="year"></span> PSU — AI &amp; Robotics Excellence Lab · All rights reserved.
     </div>
   </footer>
 
-  <script src="./script.js"></script>
+  <script>
+// ── Smooth scroll ──────────────────────────────────────────────
+function scrollToSection(id) {
+  const section = document.getElementById(id);
+  if (section) section.scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── Card entrance animation ────────────────────────────────────
+function animateCards() {
+  const wh = window.innerHeight;
+  document.querySelectorAll('.card').forEach(card => {
+    if (card.getBoundingClientRect().top < wh - 50) {
+      card.classList.add('visible');
+    }
+  });
+}
+
+// ── Footer year ────────────────────────────────────────────────
+function updateYear() {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
+}
+
+// ── Publications: filter + search ─────────────────────────────
+(function initPublications() {
+  const searchInput = document.getElementById('pub-search');
+  const filterBtns  = document.querySelectorAll('.pub-filter');
+  const items       = document.querySelectorAll('.pub-item');
+  const yearGroups  = document.querySelectorAll('.pub-year-group');
+  const emptyMsg    = document.getElementById('pub-empty');
+
+  let activeFilter = 'all';
+  let searchQuery  = '';
+
+  function applyFilters() {
+    items.forEach(item => {
+      const journal     = item.dataset.journal || '';
+      const title       = item.querySelector('.pub-title')?.textContent.toLowerCase() || '';
+      const matchFilter = activeFilter === 'all' || journal === activeFilter;
+      const matchSearch = title.includes(searchQuery);
+      item.classList.toggle('hidden', !(matchFilter && matchSearch));
+    });
+
+    yearGroups.forEach(group => {
+      const visible = [...group.querySelectorAll('.pub-item')].some(i => !i.classList.contains('hidden'));
+      group.style.display = visible ? '' : 'none';
+    });
+
+    const anyVisible = [...items].some(i => !i.classList.contains('hidden'));
+    if (emptyMsg) emptyMsg.style.display = anyVisible ? 'none' : 'block';
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', e => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      applyFilters();
+    });
+  }
+})();
+
+// ── Org chart: toggle / expand / collapse / search ────────────
+(function initOrgChart() {
+  document.querySelectorAll('#members .toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const list      = document.getElementById(btn.getAttribute('aria-controls'));
+      const collapsed = list.classList.toggle('collapsed');
+      btn.textContent = collapsed ? '▸' : '▾';
+      btn.setAttribute('aria-expanded', String(!collapsed));
+    });
+  });
+
+  const expandAll   = document.getElementById('expand-all');
+  const collapseAll = document.getElementById('collapse-all');
+  if (expandAll)   expandAll.onclick   = () => {
+    document.querySelectorAll('#members .members-list').forEach(l => l.classList.remove('collapsed'));
+    document.querySelectorAll('#members .toggle').forEach(b => { b.textContent = '▾'; b.setAttribute('aria-expanded','true'); });
+  };
+  if (collapseAll) collapseAll.onclick = () => {
+    document.querySelectorAll('#members .members-list').forEach(l => l.classList.add('collapsed'));
+    document.querySelectorAll('#members .toggle').forEach(b => { b.textContent = '▸'; b.setAttribute('aria-expanded','false'); });
+  };
+
+  const orgSearch = document.getElementById('org-search');
+  if (orgSearch) {
+    orgSearch.addEventListener('input', e => {
+      const q = e.target.value.toLowerCase();
+      document.querySelectorAll('#members .members-list li').forEach(m => {
+        m.style.display = m.textContent.toLowerCase().includes(q) ? '' : 'none';
+        if (q) m.closest('.members-list').classList.remove('collapsed');
+      });
+    });
+  }
+})();
+
+// ── Nav & button smooth scroll ─────────────────────────────────
+document.querySelectorAll('.main-nav a').forEach(link => {
+  link.addEventListener('click', event => {
+    const target = link.getAttribute('href');
+    if (target && target.startsWith('#')) {
+      event.preventDefault();
+      scrollToSection(target.substring(1));
+    }
+  });
+});
+
+// ── Init ───────────────────────────────────────────────────────
+window.addEventListener('load',   () => { animateCards(); updateYear(); });
+window.addEventListener('scroll', animateCards);
+  </script>
+
 </body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
 </html>
